@@ -14,14 +14,13 @@ class _InspirationPageState extends State<InspirationPage> {
       resizeToAvoidBottomInset: false,
       backgroundColor: const Color.fromRGBO(244, 243, 243, 1),
       appBar: AppBar(
-          title: const Center(
-            child: Text(
-              'INSPIRATION APP',
-              style: TextStyle(
-                color: Colors.black87,
-                fontWeight: FontWeight.bold,
-                fontSize: 25,
-              ),
+          centerTitle: true,
+          title: const Text(
+            'INSPIRATION APP',
+            style: TextStyle(
+              color: Colors.black87,
+              fontWeight: FontWeight.bold,
+              fontSize: 25,
             ),
           ),
           backgroundColor: Colors.white,
