@@ -18,6 +18,40 @@ class _WalletUiState extends State<WalletUi> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
+
+      //creating a navigation bar with floating action button
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.white,
+        child: const Icon(
+          Icons.home_outlined,
+          color: Colors.black,
+          size: 40,
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: const BottomAppBar(
+        height: 60,
+        color: Colors.black,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Icon(
+              Icons.monetization_on_outlined,
+              color: Colors.white,
+              size: 35,
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            Icon(
+              Icons.settings,
+              color: Colors.white,
+              size: 35,
+            ),
+          ],
+        ),
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -75,6 +109,7 @@ class _WalletUiState extends State<WalletUi> {
                   MyCard(
                       balance: 50002.35,
                       currency: '\$',
+                      cardType: 'assets/images/american-express.png',
                       cardNumber: 1234,
                       color: Colors.black87,
                       expiryMonth: 8,
@@ -82,6 +117,7 @@ class _WalletUiState extends State<WalletUi> {
                   MyCard(
                       balance: 300.86,
                       currency: '₤',
+                      cardType: 'assets/images/visa.png',
                       cardNumber: 5678,
                       color: Color.fromARGB(255, 179, 164, 28),
                       expiryMonth: 8,
@@ -89,6 +125,7 @@ class _WalletUiState extends State<WalletUi> {
                   MyCard(
                       balance: 528.27,
                       currency: '£',
+                      cardType: 'assets/images/american-express.png',
                       cardNumber: 4321,
                       color: Color.fromARGB(255, 115, 114, 114),
                       expiryMonth: 8,
@@ -96,6 +133,7 @@ class _WalletUiState extends State<WalletUi> {
                   MyCard(
                       balance: 7500000,
                       currency: '₦',
+                      cardType: 'assets/images/mastercard.png',
                       cardNumber: 8765,
                       color: Color.fromARGB(255, 25, 94, 27),
                       expiryMonth: 8,
@@ -142,18 +180,22 @@ class _WalletUiState extends State<WalletUi> {
               ),
             ),
 
+            const SizedBox(
+              height: 7,
+            ),
+
             //creating listview
             Padding(
-              padding: const EdgeInsets.all(25),
+              padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Container(
                 height: 220,
                 color: Colors.transparent,
                 child: Scrollbar(
                   thumbVisibility: true,
                   child: ListView(
-                    children: const [
+                    children: [
                       //Transaction history
-                      MyList(
+                      const MyList(
                         tileColor: Colors.black,
                         leadingImage: 'assets/images/transaction.png',
                         titleText: 'Transactions',
@@ -164,7 +206,7 @@ class _WalletUiState extends State<WalletUi> {
                       ),
 
                       //Statistics
-                      MyList(
+                      const MyList(
                         tileColor: Colors.white,
                         leadingImage: 'assets/images/analysis.png',
                         titleText: 'Statistics',
@@ -175,7 +217,7 @@ class _WalletUiState extends State<WalletUi> {
                       ),
 
                       //Overdraft
-                      MyList(
+                      const MyList(
                         tileColor: Colors.black,
                         leadingImage: 'assets/images/signing.png',
                         titleText: 'Overdraft',
@@ -184,7 +226,7 @@ class _WalletUiState extends State<WalletUi> {
                         subtitleTextColor: Colors.white,
                         trailingIconColor: Colors.white,
                       ),
-                      MyList(
+                      const MyList(
                         tileColor: Colors.white,
                         leadingImage: 'assets/images/qr-code.png',
                         titleText: 'Scan QR',
@@ -193,14 +235,19 @@ class _WalletUiState extends State<WalletUi> {
                         subtitleTextColor: Colors.black,
                         trailingIconColor: Colors.black,
                       ),
-                      MyList(
-                        tileColor: Colors.black,
-                        leadingImage: 'assets/images/accountant.png',
-                        titleText: 'Account Officer',
-                        titleTextColor: Colors.white,
-                        subtitleText: 'Speak to your account officer',
-                        subtitleTextColor: Colors.white,
-                        trailingIconColor: Colors.white,
+                      Container(
+                        margin: const EdgeInsets.only(
+                          bottom: 10,
+                        ),
+                        child: const MyList(
+                          tileColor: Colors.black,
+                          leadingImage: 'assets/images/accountant.png',
+                          titleText: 'Account Officer',
+                          titleTextColor: Colors.white,
+                          subtitleText: 'Speak to your account officer',
+                          subtitleTextColor: Colors.white,
+                          trailingIconColor: Colors.white,
+                        ),
                       ),
                     ],
                   ),
